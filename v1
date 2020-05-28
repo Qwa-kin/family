@@ -1,4 +1,5 @@
 <? 
+header('Content-Type: text/html; charset=utf-8');
 class Person{
   public $name;
   public $patronymic;
@@ -23,24 +24,24 @@ class Person{
     else if ($this->mother == null) $str = "Mother  is null<br>My father: ".$this->father->name."<br>My grandfatherF: ".$this->father->father->name."<br>My grandmotherF: ".$this->father->mother->name."<br>";
     else if ($this->father == null) $str = "Father is null<br>My mother: ".$this->mother->name."<br>My grandfatherM: ".$this->mother->father->name."<br>My grandmotherM: ".$this->mother->mother->name."<br>";
     else
-      $str = "My mother: ".$this->mother->name."<br>
-              My father: ".$this->father->name."<br>
-              My grandmotherM: ".$this->mother->mother->name."<br>
-              My grandfatherM: ".$this->mother->father->name."<br>
-              My grandmotherF: ".$this->father->mother->name."<br>
-              My grandfatherF: ".$this->father->father->name."<br>";
-    return $str;
-  }
+      $str =  "My mother: ".$this->mother->name."<br>
+               My father: ".$this->father->name."<br>
+               My grandmotherM: ".$this->mother->mother->name."<br>
+               My grandfatherM: ".$this->mother->father->name."<br>
+               My grandmotherF: ".$this->father->mother->name."<br>
+               My grandfatherF: ".$this->father->father->name."<br>";
+      return $str;
+     }
 }
-
-$marfa = new Person("Марфа","Андреевна","Крылова",69,'__','__');
-$boris = new Person("Борис","Инокентьевич","Крылов",74,'__','__');
-$antonina = new Person("Антонина","Евлапьевна","Шишкина",68,'__','__');
-$yaroslav = new Person("Ярослав","Алексеевич","Шишкин",70,'__','__');
+$marfa = new Person("Марфа","Андреевна","Крылова",69);
+$boris = new Person("Борис","Инокентьевич","Крылов",74);
+$antonina = new Person("Антонина","Евлапьевна","Шишкина",68);
+$yaroslav = new Person("Ярослав","Алексеевич","Шишкин",70);
 $elena = new Person("Елена","Ярославовна","Крылова",37,$antonina,$yaroslav);
 $fedor = new Person("Федор","Борисович","Крылов",44,$marfa,$boris);
 $vasilisa = new Person("Василиса","Федоровна","Крылова",15,$elena,$fedor);
 $ilya = new Person("Илья","Федорович","Крылов",8,$elena,$fedor);
-$andrey = new Person("Андрей","Федорович","Крылов",22,'__',$fedor);
+$andrey = new Person("Андрей","Федорович","Крылов",22,'',$fedor);
 
+ echo "Hi, my name is ".$ilya->name. "мои предки :" .$ilya->tellAboutYourParents();
 ?>
